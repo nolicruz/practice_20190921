@@ -1,0 +1,125 @@
+PRELIMINARY
+
+  git --version
+  cd src
+  cd git
+  ls -ltr
+  git config --global user.name "Noli Cruz"
+  git config --global
+  git config --global user.name
+  git config --global user.email
+  git config --list
+  git help
+  git help config
+  git config --help
+  git add --help
+
+
+
+  # TWO COMMON SCENARIOs
+  #     1) Start tracking an existing project
+  #     2) A remote project you want to start participating in
+/*---------------------------------------------*/
+  # Scenario 1 - local project you want to start tracking
+  ls
+  mkdir practice02
+  cd practice02
+  git init
+  ls -l
+  ls -la
+  # The .git directory created contains all of the tracking info
+  # to stop tracking the project
+  rm -rf .git
+  ls -la
+  git init
+  # Initialized empty Git repository in /home/noli/src/git/practice02/.git/
+  git status
+  # On branch master
+  # No commits yet
+  history|sed -n '2000, p'
+  history|sed -n '2000p'
+  history|sed -n '2000,$p'
+  history|sed -n '/^2000/,/^2034/p'
+  history|awk '$1>=2000{print}'
+  gvim file1.txt
+  gvim file2.txt
+  git status
+  # On branch master
+  # No commits yet
+  # Untracked files:
+  #   (use "git add <file>..." to include in what will be committed)
+  #file1.txt
+  #file2.txt
+  gvim dont_want_toadd_this.txt
+  git status
+  touch .gitignore
+  gvim .gitignore 
+  cat .gitignore 
+  # dont_want_toadd_this.txt
+  # *.xls
+  git status
+  git add -A     # add all files
+  git status
+  # On branch master
+  # No commits yet
+  # Changes to be committed:
+  $   (use "git rm --cached <file>..." to unstage)
+  #   (use "git rm --cached <file>..." to unstage)
+  # new file:   .gitignore
+  # new file:   file1.txt
+  # new file:   file2.txt
+  git reset file1.txt
+  # removes from staging area
+  # restore it again
+  git add file1.txt 
+  git status # previous status restored
+  git commit -m "Initial Commit"
+  # [master (root-commit) 14ab8c7] Initial Commit
+  #  3 files changed, 7 insertions(+)
+  #  create mode 100644 .gitignore
+  #  create mode 100644 file1.txt
+  #  create mode 100644 file2.txt
+  git status
+  # On branch master
+  # nothing to commit, working tree clean
+  git log
+  # commit 14ab8c757c100ecddb36bb0823a0d5ec308eaaea (HEAD -> master)
+  # Author: Noli Cruz <nolicruz001@gmail.com>
+  # Date:   Fri Mar 12 09:11:40 2021 +0800
+
+
+/*---------------------------------------------*/
+
+
+  # SCENARIO 2 TRACK A REMOTE PROJECT
+  git clone https://github.com/nolicruz/practice_20190921 .
+  cd ..\
+  cd ..
+  mkdir practice03
+  cd practice03   # Create a new directory
+  ls -la  # Totally empty directory
+  git clone https://github.com/nolicruz/practice_20190921 .
+  ls -la  # Contents now downloaded 
+  # Viewing information about the remote repository
+  git remote -v
+  git branch -a
+  git remote -v
+  # originhttps://github.com/nolicruz/practice_20190921 (fetch)
+  # originhttps://github.com/nolicruz/practice_20190921 (push)
+  git branch -a 
+  #   remotes/origin/HEAD -> origin/master
+  #   remotes/origin/master
+  ls -ltr
+  gvim file_12.txt 
+  git diff #show changes made
+  git status
+  git add -A
+  git commit -m "Modified file_12.txt on 20210314"
+  git status
+  git log
+  git pull origin master
+  # git pull makes sure all changes from remote repository made up to date to local
+  git push origin master  # remote repo, branch
+
+  /*---------------------------------------------*/ 
+  LINE 2118
